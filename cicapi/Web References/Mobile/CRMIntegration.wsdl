@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:tns="urn:microsoft-dynamics-schemas/codeunit/CRMIntegration" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/CRMIntegration" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <schema elementFormDefault="qualified" targetNamespace="urn:microsoft-dynamics-schemas/codeunit/CRMIntegration" xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="FnMemberStatementStream">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="memberNo" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigText" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="from" type="date" />
+            <element minOccurs="1" maxOccurs="1" name="toDate" type="date" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="FnMemberStatementStream_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bigText" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="FnIntermediaryrStatement">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="intermediaryCode" type="string" />
+            <element minOccurs="1" maxOccurs="1" name="bigText" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="FnIntermediaryrStatement_Result">
+        <complexType>
+          <sequence>
+            <element minOccurs="1" maxOccurs="1" name="bigText" type="string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </types>
+  <message name="FnMemberStatementStream">
+    <part name="parameters" element="tns:FnMemberStatementStream" />
+  </message>
+  <message name="FnMemberStatementStream_Result">
+    <part name="parameters" element="tns:FnMemberStatementStream_Result" />
+  </message>
+  <message name="FnIntermediaryrStatement">
+    <part name="parameters" element="tns:FnIntermediaryrStatement" />
+  </message>
+  <message name="FnIntermediaryrStatement_Result">
+    <part name="parameters" element="tns:FnIntermediaryrStatement_Result" />
+  </message>
+  <portType name="CRMIntegration_Port">
+    <operation name="FnMemberStatementStream">
+      <input name="FnMemberStatementStream" message="tns:FnMemberStatementStream" />
+      <output name="FnMemberStatementStream_Result" message="tns:FnMemberStatementStream_Result" />
+    </operation>
+    <operation name="FnIntermediaryrStatement">
+      <input name="FnIntermediaryrStatement" message="tns:FnIntermediaryrStatement" />
+      <output name="FnIntermediaryrStatement_Result" message="tns:FnIntermediaryrStatement_Result" />
+    </operation>
+  </portType>
+  <binding name="CRMIntegration_Binding" type="tns:CRMIntegration_Port">
+    <binding transport="http://schemas.xmlsoap.org/soap/http" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    <operation name="FnMemberStatementStream">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/CRMIntegration:FnMemberStatementStream" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="FnMemberStatementStream">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="FnMemberStatementStream_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+    <operation name="FnIntermediaryrStatement">
+      <operation soapAction="urn:microsoft-dynamics-schemas/codeunit/CRMIntegration:FnIntermediaryrStatement" style="document" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      <input name="FnIntermediaryrStatement">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </input>
+      <output name="FnIntermediaryrStatement_Result">
+        <body use="literal" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+      </output>
+    </operation>
+  </binding>
+  <service name="CRMIntegration">
+    <port name="CRMIntegration_Port" binding="tns:CRMIntegration_Binding">
+      <address location="http://192.168.0.15:7047/DynamicsNAV90/WS/CIC%20JIPANGE%20PENSION%20PLAN/Codeunit/CRMIntegration" xmlns="http://schemas.xmlsoap.org/wsdl/soap/" />
+    </port>
+  </service>
+</definitions>
